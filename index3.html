@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <link rel="stylesheet" href="./index3.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Koulen' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Lexend Deca' rel='stylesheet'>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Company Master</title>
+  <script type="text/javascript" src="./city_state.js"></script>
+</head>
+
+<body>
+  <main class="main">
+    <aside class="sidebar">
+      <nav class="nav">
+        <ul>
+          <li class="active"><a href="#details" style="text-decoration: none;font-weight:bolder;font-size: 11px;"><span>
+                <p><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> Company Details</p>
+              </span></a></li><br>
+          <li class="active"><a href="#alerts"
+              style="text-decoration: none;color: black;font-weight:bolder;font-size: 11px;"><span>
+                <p><i class="fa fa-bell fa-lg" aria-hidden="true"></i> Alert Settings</p>
+              </span></a></li><br>
+          <li class="active"><a href="#dep"
+              style="text-decoration: none;color: black;font-weight:bolder;font-size: 11px;"><span>
+                <p><i class="fa fa-calculator fa-lg" aria-hidden="true"></i> Depriciation Calculation</p>
+              </span></a></li><br>
+          <li class="active"><a href="#add"
+              style="text-decoration: none;color: black;font-weight:bolder;font-size: 11px;"><span>
+                <p><i class="fa fa-sliders fa-lg" aria-hidden="true"></i> Additional Settings</p>
+              </span></a></li><br>
+          <li class="active"><a href="#confirm"
+              style="text-decoration: none;color: black;font-weight:bolder;font-size: 11px;"><span>
+                <p><i class="fa fa-check-square-o fa-lg" aria-hidden="true"></i> Confirm Updates</p>
+              </span></a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="details" id="details">
+      <div class="container">
+        <br>
+        <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Company Master</h1>
+        <br>
+        <h3 style="font-family: Lexend Deca;"><i class="fa fa-pencil-square-o " aria-hidden="true"></i> Company Details</h3>
+        <br>
+        <form>
+          <div class="input-container">
+            <input type="text" id="code" class="text-input" autocomplete="off" required />
+            <label class="label" for="code">Company Code</label>
+          </div>
+          <br>
+          <div class="input-container">
+
+            <input type="text" id="name" class="text-input" autocomplete="off" required />
+            <label class="label" for="name">Company Name</label>
+          </div>
+          <br>
+          <div class="input-container">
+            <textarea id="Address" class="text-input" autocomplete="off" required></textarea>
+            <label class="label" for="Address">Address</label>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <select style="width: 535px;height: 48px;border: 2px solid rgba(9, 59, 188, 0.378);border-radius: 5px;"
+                onchange="set_country(this,country,city_state)" size="1" name="region">
+                <option value="" selected="selected">Region</option>
+                <option value=""></option>
+                <script type="text/javascript">
+                  setRegions(this);
+                </script>
+              </select>
+            </div>
+            <br>
+            <div class="col">
+              <select style="width: 535px;height: 48px;border: 2px solid rgba(9, 59, 188, 0.378);border-radius: 5px;"
+                name="country" size="1" disabled="disabled" onchange="set_city_state(this,city_state)">
+                <option value="" selected="selected">Country</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <select name="city_state"
+                style="width: 535px;height: 48px;border: 2px solid rgba(9, 59, 188, 0.378);border-radius: 5px;" size="1"
+                disabled="disabled" onchange="print_city_state(country,this)">
+                <option value="" selected="selected">State
+              </select>
+            </div>
+            <br>
+            <div class="col">
+              <div class="input-container">
+                <input type="text" id="mail" class="text-input" autocomplete="off" placeholder="e.g. example@gmail.com"
+                  required />
+                <label class="label" for="mail">Email</label>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <p style="color: #000;margin-bottom: 2px;font-weight: normal;">Telephone Number</p>
+
+              <div class="input-container">
+
+                <input style="width: 535px;" type="tel" id="phone" class="text-input" autocomplete="off" name="phone"
+                  required />
+
+
+              </div>
+            </div>
+            <br>
+            <div class="col">
+              <p style="color: #000;margin-bottom: 2px;font-weight: normal;">Fax</p>
+              <div class="input-container">
+
+                <input type="text" id="Fax" class="text-input" autocomplete="off" required />
+
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+
+
+              <div class="input-container">
+                <input type="text" id="web" class="text-input" autocomplete="off" placeholder="e.g. www.example.com"
+                  required />
+                <label class="label" for="web">Website</label>
+
+
+              </div>
+            </div>
+            <br>
+            <div class="col">
+
+              <div class="input-container">
+
+                <input type="text" id="Currency" class="text-input" autocomplete="off" list="currency"
+                  placeholder="Enter the Currency" required />
+                <label class="label" for="Currency">Currency</label>
+                <datalist id="currency">
+                  <option value="USD" selected="selected" label="US dollar">USD</option>
+                  <option value="EUR" label="Euro">EUR</option>
+                  <option value="JPY" label="Japanese yen">JPY</option>
+                  <option value="GBP" label="Pound sterling">GBP</option>
+                  <option disabled>──────────</option>
+                  <option value="AED" label="United Arab Emirates dirham">AED</option>
+                  <option value="AFN" label="Afghan afghani">AFN</option>
+                  <option value="ALL" label="Albanian lek">ALL</option>
+                  <option value="AMD" label="Armenian dram">AMD</option>
+                  <option value="ANG" label="Netherlands Antillean guilder">ANG</option>
+                  <option value="AOA" label="Angolan kwanza">AOA</option>
+                  <option value="ARS" label="Argentine peso">ARS</option>
+                  <option value="AUD" label="Australian dollar">AUD</option>
+                  <option value="AWG" label="Aruban florin">AWG</option>
+                  <option value="AZN" label="Azerbaijani manat">AZN</option>
+                  <option value="BAM" label="Bosnia and Herzegovina convertible mark">BAM</option>
+                  <option value="BBD" label="Barbadian dollar">BBD</option>
+                  <option value="BDT" label="Bangladeshi taka">BDT</option>
+                  <option value="BGN" label="Bulgarian lev">BGN</option>
+                  <option value="BHD" label="Bahraini dinar">BHD</option>
+                  <option value="BIF" label="Burundian franc">BIF</option>
+                  <option value="BMD" label="Bermudian dollar">BMD</option>
+                  <option value="BND" label="Brunei dollar">BND</option>
+                  <option value="BOB" label="Bolivian boliviano">BOB</option>
+                  <option value="BRL" label="Brazilian real">BRL</option>
+                  <option value="BSD" label="Bahamian dollar">BSD</option>
+                  <option value="BTN" label="Bhutanese ngultrum">BTN</option>
+                  <option value="BWP" label="Botswana pula">BWP</option>
+                  <option value="BYN" label="Belarusian ruble">BYN</option>
+                  <option value="BZD" label="Belize dollar">BZD</option>
+                  <option value="CAD" label="Canadian dollar">CAD</option>
+                  <option value="CDF" label="Congolese franc">CDF</option>
+                  <option value="CHF" label="Swiss franc">CHF</option>
+                  <option value="CLP" label="Chilean peso">CLP</option>
+                  <option value="CNY" label="Chinese yuan">CNY</option>
+                  <option value="COP" label="Colombian peso">COP</option>
+                  <option value="CRC" label="Costa Rican colón">CRC</option>
+                  <option value="CUC" label="Cuban convertible peso">CUC</option>
+                  <option value="CUP" label="Cuban peso">CUP</option>
+                  <option value="CVE" label="Cape Verdean escudo">CVE</option>
+                  <option value="CZK" label="Czech koruna">CZK</option>
+                  <option value="DJF" label="Djiboutian franc">DJF</option>
+                  <option value="DKK" label="Danish krone">DKK</option>
+                  <option value="DOP" label="Dominican peso">DOP</option>
+                  <option value="DZD" label="Algerian dinar">DZD</option>
+                  <option value="EGP" label="Egyptian pound">EGP</option>
+                  <option value="ERN" label="Eritrean nakfa">ERN</option>
+                  <option value="ETB" label="Ethiopian birr">ETB</option>
+                  <option value="EUR" label="EURO">EUR</option>
+                  <option value="FJD" label="Fijian dollar">FJD</option>
+                  <option value="FKP" label="Falkland Islands pound">FKP</option>
+                  <option value="GBP" label="British pound">GBP</option>
+                  <option value="GEL" label="Georgian lari">GEL</option>
+                  <option value="GGP" label="Guernsey pound">GGP</option>
+                  <option value="GHS" label="Ghanaian cedi">GHS</option>
+                  <option value="GIP" label="Gibraltar pound">GIP</option>
+                  <option value="GMD" label="Gambian dalasi">GMD</option>
+                  <option value="GNF" label="Guinean franc">GNF</option>
+                  <option value="GTQ" label="Guatemalan quetzal">GTQ</option>
+                  <option value="GYD" label="Guyanese dollar">GYD</option>
+                  <option value="HKD" label="Hong Kong dollar">HKD</option>
+                  <option value="HNL" label="Honduran lempira">HNL</option>
+                  <option value="HRK" label="Croatian kuna">HRK</option>
+                  <option value="HTG" label="Haitian gourde">HTG</option>
+                  <option value="HUF" label="Hungarian forint">HUF</option>
+                  <option value="IDR" label="Indonesian rupiah">IDR</option>
+                  <option value="ILS" label="Israeli new shekel">ILS</option>
+                  <option value="IMP" label="Manx pound">IMP</option>
+                  <option value="INR" label="Indian rupee">INR</option>
+                  <option value="IQD" label="Iraqi dinar">IQD</option>
+                  <option value="IRR" label="Iranian rial">IRR</option>
+                  <option value="ISK" label="Icelandic króna">ISK</option>
+                  <option value="JEP" label="Jersey pound">JEP</option>
+                  <option value="JMD" label="Jamaican dollar">JMD</option>
+                  <option value="JOD" label="Jordanian dinar">JOD</option>
+                  <option value="JPY" label="Japanese yen">JPY</option>
+                  <option value="KES" label="Kenyan shilling">KES</option>
+                  <option value="KGS" label="Kyrgyzstani som">KGS</option>
+                  <option value="KHR" label="Cambodian riel">KHR</option>
+                  <option value="KID" label="Kiribati dollar">KID</option>
+                  <option value="KMF" label="Comorian franc">KMF</option>
+                  <option value="KPW" label="North Korean won">KPW</option>
+                  <option value="KRW" label="South Korean won">KRW</option>
+                  <option value="KWD" label="Kuwaiti dinar">KWD</option>
+                  <option value="KYD" label="Cayman Islands dollar">KYD</option>
+                  <option value="KZT" label="Kazakhstani tenge">KZT</option>
+                  <option value="LAK" label="Lao kip">LAK</option>
+                  <option value="LBP" label="Lebanese pound">LBP</option>
+                  <option value="LKR" label="Sri Lankan rupee">LKR</option>
+                  <option value="LRD" label="Liberian dollar">LRD</option>
+                  <option value="LSL" label="Lesotho loti">LSL</option>
+                  <option value="LYD" label="Libyan dinar">LYD</option>
+                  <option value="MAD" label="Moroccan dirham">MAD</option>
+                  <option value="MDL" label="Moldovan leu">MDL</option>
+                  <option value="MGA" label="Malagasy ariary">MGA</option>
+                  <option value="MKD" label="Macedonian denar">MKD</option>
+                  <option value="MMK" label="Burmese kyat">MMK</option>
+                  <option value="MNT" label="Mongolian tögrög">MNT</option>
+                  <option value="MOP" label="Macanese pataca">MOP</option>
+                  <option value="MRU" label="Mauritanian ouguiya">MRU</option>
+                  <option value="MUR" label="Mauritian rupee">MUR</option>
+                  <option value="MVR" label="Maldivian rufiyaa">MVR</option>
+                  <option value="MWK" label="Malawian kwacha">MWK</option>
+                  <option value="MXN" label="Mexican peso">MXN</option>
+                  <option value="MYR" label="Malaysian ringgit">MYR</option>
+                  <option value="MZN" label="Mozambican metical">MZN</option>
+                  <option value="NAD" label="Namibian dollar">NAD</option>
+                  <option value="NGN" label="Nigerian naira">NGN</option>
+                  <option value="NIO" label="Nicaraguan córdoba">NIO</option>
+                  <option value="NOK" label="Norwegian krone">NOK</option>
+                  <option value="NPR" label="Nepalese rupee">NPR</option>
+                  <option value="NZD" label="New Zealand dollar">NZD</option>
+                  <option value="OMR" label="Omani rial">OMR</option>
+                  <option value="PAB" label="Panamanian balboa">PAB</option>
+                  <option value="PEN" label="Peruvian sol">PEN</option>
+                  <option value="PGK" label="Papua New Guinean kina">PGK</option>
+                  <option value="PHP" label="Philippine peso">PHP</option>
+                  <option value="PKR" label="Pakistani rupee">PKR</option>
+                  <option value="PLN" label="Polish złoty">PLN</option>
+                  <option value="PRB" label="Transnistrian ruble">PRB</option>
+                  <option value="PYG" label="Paraguayan guaraní">PYG</option>
+                  <option value="QAR" label="Qatari riyal">QAR</option>
+                  <option value="RON" label="Romanian leu">RON</option>
+                  <option value="RSD" label="Serbian dinar">RSD</option>
+                  <option value="RUB" label="Russian ruble">RUB</option>
+                  <option value="RWF" label="Rwandan franc">RWF</option>
+                  <option value="SAR" label="Saudi riyal">SAR</option>
+                  <option value="SEK" label="Swedish krona">SEK</option>
+                  <option value="SGD" label="Singapore dollar">SGD</option>
+                  <option value="SHP" label="Saint Helena pound">SHP</option>
+                  <option value="SLL" label="Sierra Leonean leone">SLL</option>
+                  <option value="SLS" label="Somaliland shilling">SLS</option>
+                  <option value="SOS" label="Somali shilling">SOS</option>
+                  <option value="SRD" label="Surinamese dollar">SRD</option>
+                  <option value="SSP" label="South Sudanese pound">SSP</option>
+                  <option value="STN" label="São Tomé and Príncipe dobra">STN</option>
+                  <option value="SYP" label="Syrian pound">SYP</option>
+                  <option value="SZL" label="Swazi lilangeni">SZL</option>
+                  <option value="THB" label="Thai baht">THB</option>
+                  <option value="TJS" label="Tajikistani somoni">TJS</option>
+                  <option value="TMT" label="Turkmenistan manat">TMT</option>
+                  <option value="TND" label="Tunisian dinar">TND</option>
+                  <option value="TOP" label="Tongan paʻanga">TOP</option>
+                  <option value="TRY" label="Turkish lira">TRY</option>
+                  <option value="TTD" label="Trinidad and Tobago dollar">TTD</option>
+                  <option value="TVD" label="Tuvaluan dollar">TVD</option>
+                  <option value="TWD" label="New Taiwan dollar">TWD</option>
+                  <option value="TZS" label="Tanzanian shilling">TZS</option>
+                  <option value="UAH" label="Ukrainian hryvnia">UAH</option>
+                  <option value="UGX" label="Ugandan shilling">UGX</option>
+                  <option value="USD" label="United States dollar">USD</option>
+                  <option value="UYU" label="Uruguayan peso">UYU</option>
+                  <option value="UZS" label="Uzbekistani soʻm">UZS</option>
+                  <option value="VES" label="Venezuelan bolívar soberano">VES</option>
+                  <option value="VND" label="Vietnamese đồng">VND</option>
+                  <option value="VUV" label="Vanuatu vatu">VUV</option>
+                  <option value="WST" label="Samoan tālā">WST</option>
+                  <option value="XAF" label="Central African CFA franc">XAF</option>
+                  <option value="XCD" label="Eastern Caribbean dollar">XCD</option>
+                  <option value="XOF" label="West African CFA franc">XOF</option>
+                  <option value="XPF" label="CFP franc">XPF</option>
+                  <option value="ZAR" label="South African rand">ZAR</option>
+                  <option value="ZMW" label="Zambian kwacha">ZMW</option>
+                  <option value="ZWB" label="Zimbabwean bonds">ZWB</option>
+                </datalist>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <br>
+
+          <br>
+      </div>
+    </section>
+
+    <section class="details" id="alerts">
+      <div class="container">
+        <br>
+        <h3 style="font-family: Lexend Deca;"><i class="fa fa-bell " aria-hidden="true"></i> Alert Settings</h3>
+        <br>
+        <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Number of days prior to expiry before
+          reminder
+          pops up <input type="text" class="text-input2"></font>
+        <br>
+        <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Number of days prior to expiry before
+          reminder
+          pops up for AMC <input type="text" class="text-input2"></font>
+        <br>
+        <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Number of days prior to expiry before
+          reminder
+          pops up for Insurance <input type="text" class="text-input2"></font>
+        <br>
+        <br>
+      </div>
+    </section>
+
+    <section class="details" id="dep">
+      <div class="container">
+        <br>
+        <h3 style="font-family: Lexend Deca;"><i class="fa fa-calculator " aria-hidden="true"></i> Depriciation Calculation</h3>
+        <br>
+  
+	
+		<div class="login-wrap" style="margin-left: 20px;">
+			<div class="login-html">
+				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Day</label>
+				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Month</label>
+				<div class="login-form">
+					<div class="sign-in-htm">
+						<div style="display: inline-block;">
+							<b>Exclude Purchase(Day)</b>
+							<input type="radio" name="daily1" style="margin: 10px;">Yes
+							<input type="radio" name="daily1" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+							<b>Exclude Discard(Day)</b>
+							<input type="radio" name="daily2" style="margin: 10px;">Yes
+							<input type="radio" name="daily2" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+			  
+						  </div>
+						  <div style="display: inline-block;">
+							<b>Exclude Lease(Day)</b>
+							<input type="radio" name="daily3" style="margin: 10px;">Yes
+							<input type="radio" name="daily3" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+							<b>Exclude Sale(Day)</b>
+							<input type="radio" name="daily4" style="margin: 10px;">Yes
+							<input type="radio" name="daily4" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+			  
+						  </div>
+						  <div style="display: inline-block;">
+							<b>Exclude Split(Day)</b>
+							<input type="radio" name="daily5" style="margin: 10px;">Yes
+							<input type="radio" name="daily5" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+						  </div>
+					</div>
+					<div class="sign-up-htm">
+						<div style="display: inline-block;">
+							<b>Exclude Purchase(Month)</b>
+							<input type="radio" name="m1" style="margin: 10px;">Yes
+							<input type="radio" name="m1" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+							<b>Exclude Discard(Month)</b>
+							<input type="radio" name="m2" style="margin: 10px;">Yes
+							<input type="radio" name="m2" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+			  
+						  </div>
+						  <div style="display: inline-block;">
+							<b>Exclude Lease(Month)</b>
+							<input type="radio" name="m3" style="margin: 10px;">Yes
+							<input type="radio" name="m3" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+							<b>Exclude Sale(Month)</b>
+							<input type="radio" name="m4" style="margin: 10px;">Yes
+							<input type="radio" name="m4" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+			  
+						  </div>
+						  <div style="display: inline-block;">
+							<b>Exclude Split(Month)</b>
+							<input type="radio" name="m5" style="margin: 10px;">Yes
+							<input type="radio" name="m5" style="margin: 10px;">
+							<font style="margin-right: 30px;">No</font>
+						  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+      </div>
+    </section>
+    <br>
+    <section class="details" id="add">
+      <div class="container">
+        <br>
+        <h3 style="font-family: Lexend Deca;"><i class="fa fa-sliders" aria-hidden="true"></i> Additional Settings</h3>
+        <br>
+        <div>
+          <div class="row justify-content-left">
+            <div class="col">
+          <b style="margin: 10px;color: black;">Consider sub-period opening balance for depreciation calculation</b>
+            </div>
+            <div class="col">
+          <input type="radio" name="0" style="margin: 10px;">Yes
+          <input type="radio" name="0" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Depreciation Round Off</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="1" style="margin: 10px;">Yes
+          <input type="radio" name="1" style="margin: 10px;">No
+            </div>
+          </div>
+          
+          
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Calculate Depreciation for sold/discard assets</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="2" style="margin: 10px;">Yes
+              <input type="radio" name="2" style="margin: 10px;">No
+            </div>
+          </div>
+          
+         
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Recover depreciation at the time of sale/discard</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="3" style="margin: 10px;">Yes
+              <input type="radio" name="3" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Asset-wise Details for IT Book Depreciation</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="4" style="margin: 10px;">Yes
+              <input type="radio" name="4" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Treat Leap Year as 365 days</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="5" style="margin: 10px;">Yes
+              <input type="radio" name="5" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Save actual used days</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="6" style="margin: 10px;">Yes
+              <input type="radio" name="6" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Automatic Asset Code</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="7" style="margin: 10px;">Yes
+              <input type="radio" name="7" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Is Seasonal Factory or Concern</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="8" style="margin: 10px;">Yes
+              <input type="radio" name="8" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">50% of additional depreciation in IT Book charge in next year</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="9" style="margin: 10px;">Yes
+              <input type="radio" name="9" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Transfer To General Reserve</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="10" style="margin: 10px;">Write off
+              <input type="radio" name="10" style="margin: 10px;">Adjust Dep
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Transfer from General Reserve</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="11" style="margin: 10px;">Adjust Value
+              <input type="radio" name="11" style="margin: 10px;">Adjust Dep
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Recalculate Depreciable Amt in case of SLM - Expiry</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="12" style="margin: 10px;">Yes
+              <input type="radio" name="12" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Residual value Round Off</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="13" style="margin: 10px;">Yes
+              <input type="radio" name="13" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Consider Accr. Depreciation on Lease</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="14" style="margin: 10px;">Yes
+              <input type="radio" name="14" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">If asset expiry during period then use balance No. of days Method</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="15" style="margin: 10px;">Yes
+              <input type="radio" name="15" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Generate Auto Asset code based on parent if dependent</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="16" style="margin: 10px;">Yes
+              <input type="radio" name="16" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Match Asset cost breakup with total asset cost</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="17" style="margin: 10px;">Yes
+              <input type="radio" name="17" style="margin: 10px;">No
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <b style="margin: 10px;color: black;">Do not load assets on page load</b>
+            </div>
+            <div class="col">
+              <input type="radio" name="18" style="margin: 10px;">Yes
+              <input type="radio" name="18" style="margin: 10px;">No
+            </div>
+          </div>
+          
+          <br>
+          <b style="margin: 10px;color: black;">SLM expiry depreciation calculation</b><br>
+          <input type="radio" name="19" style="margin: 10px;">Depreciation rate on cost-residual value
+          <input type="radio" name="19" style="margin: 10px;">Depreciation rate after cost and then save
+          residual value at end
+          <br>
+          <b style="margin: 10px;color: black;">WDV expiry depreciation calculation</b><br>
+          <input type="radio" name="20" style="margin: 10px;">Depreciation rate on cost-residual value
+          <input type="radio" name="20" style="margin: 10px;">Depreciation rate after cost and then save
+          residual value at end
+          <br>
+          <b style="margin: 10px;color: black;">DDBM expiry depreciation calculation</b><br>
+          <input type="radio" name="21" style="margin: 10px;">Depreciation rate on cost-residual value
+          <input type="radio" name="21" style="margin: 10px;">Depreciation rate after cost and then save
+          residual value at end
+        </div>
+        <br>
+        <div class="prefsuff">
+          <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Start numbering from</font><input
+            type="text" class="text-input2">
+          <br>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <div class="input-container">
+                <input type="text" id="Prefix" class="text-input" autocomplete="off" placeholder="Enter Prefix" required
+                  list="prefsuff" />
+                <label class="label" for="Prefix">Prefix</label>
+                <datalist id="prefsuff">
+                  <option value="[BLOCK_CODE]">[BLOCK_CODE]</option>
+                  <option value="[CATEGORY_CODE]">[CATEGORY_CODE]</option>
+                  <option value="[SUBCATEGORY_CODE]">[SUBCATEGORY_CODE]</option>
+                  <option value="[LOCATION_CODE]">[LOCATION_CODE]</option>
+                  <option value="[COSTCENTER_CODE]">[COSTCENTER_CODE]</option>
+                  <option value="[CUSTODIAN_CODE]">[CUSTODIAN_CODE]</option>
+                  <option value="[DEPARTMENT_CODE]">[DEPARTMENT_CODE]</option>
+                  <option value="[GROUP_CODE]">[GROUP_CODE]</option>
+                  <option value="[PURCHASEDATE_ddmmyyyy]">[PURCHASEDATE_ddmmyyyy]</option>
+                  <option value="[PURCHASEDATE_ddMMMyyyy]">[PURCHASEDATE_ddMMMyyyy]</option>
+                  <option value="[PURCHASEDATE_DAY]">[PURCHASEDATE_DAY]</option>
+                  <option value="[PURCHASEDATE_MONTH]">[PURCHASEDATE_MONTH]</option>
+                  <option value="[PURCHASEDATE_MONTHNAME]">[PURCHASEDATE_MONTHNAME]</option>
+                  <option value="[PURCHASEDATE_YEAR]">[PURCHASEDATE_YEAR]</option>
+                  <option value="[PURCHASEDATE_YEAR2DIGIT]">[PURCHASEDATE_YEAR2DIGIT]</option>
+                  <option value="[USEDATE_DAY]">[USEDATE_DAY]</option>
+                  <option value="[USEDATE_MONTH]">[USEDATE_MONTH]</option>
+                  <option value="[USEDATE_YEAR]">[USEDATE_YEAR]</option>
+                  <option value="[USEDATE_ddmmyyyy]">[USEDATE_ddmmyyyy]</option>
+                  <option value="[USEDATE_ddMMMyyyy]">[USEDATE_ddMMMyyyy]</option>
+                  <option value="[USEDATE_YEAR2DIGIT]">[USEDATE_YEAR2DIGIT]</option>
+                  <option value="[USEDATE_MONTHNAME]">[USEDATE_MONTHNAME]</option>
+                  <option value="[PURCHASE_FY_YYYY]">[PURCHASE_FY_YYYY]</option>
+                  <option value="[PURCHASE_FY_YY]">[PURCHASE_FY_YY]</option>
+                </datalist>
+              </div>
+            </div>
+            <br>
+            <div class="col">
+              <div class="input-container">
+                <input type="text" id="Suffix" class="text-input" autocomplete="off" placeholder="Enter Suffix" required
+                  list="prefsuff" />
+                <label class="label" for="Suffix">Suffix</label>
+                <datalist id="prefsuff">
+                  <option value="[BLOCK_CODE]">[BLOCK_CODE]</option>
+                  <option value="[CATEGORY_CODE]">[CATEGORY_CODE]</option>
+                  <option value="[SUBCATEGORY_CODE]">[SUBCATEGORY_CODE]</option>
+                  <option value="[LOCATION_CODE]">[LOCATION_CODE]</option>
+                  <option value="[COSTCENTER_CODE]">[COSTCENTER_CODE]</option>
+                  <option value="[CUSTODIAN_CODE]">[CUSTODIAN_CODE]</option>
+                  <option value="[DEPARTMENT_CODE]">[DEPARTMENT_CODE]</option>
+                  <option value="[GROUP_CODE]">[GROUP_CODE]</option>
+                  <option value="[PURCHASEDATE_ddmmyyyy]">[PURCHASEDATE_ddmmyyyy]</option>
+                  <option value="[PURCHASEDATE_ddMMMyyyy]">[PURCHASEDATE_ddMMMyyyy]</option>
+                  <option value="[PURCHASEDATE_DAY]">[PURCHASEDATE_DAY]</option>
+                  <option value="[PURCHASEDATE_MONTH]">[PURCHASEDATE_MONTH]</option>
+                  <option value="[PURCHASEDATE_MONTHNAME]">[PURCHASEDATE_MONTHNAME]</option>
+                  <option value="[PURCHASEDATE_YEAR]">[PURCHASEDATE_YEAR]</option>
+                  <option value="[PURCHASEDATE_YEAR2DIGIT]">[PURCHASEDATE_YEAR2DIGIT]</option>
+                  <option value="[USEDATE_DAY]">[USEDATE_DAY]</option>
+                  <option value="[USEDATE_MONTH]">[USEDATE_MONTH]</option>
+                  <option value="[USEDATE_YEAR]">[USEDATE_YEAR]</option>
+                  <option value="[USEDATE_ddmmyyyy]">[USEDATE_ddmmyyyy]</option>
+                  <option value="[USEDATE_ddMMMyyyy]">[USEDATE_ddMMMyyyy]</option>
+                  <option value="[USEDATE_YEAR2DIGIT]">[USEDATE_YEAR2DIGIT]</option>
+                  <option value="[USEDATE_MONTHNAME]">[USEDATE_MONTHNAME]</option>
+                  <option value="[PURCHASE_FY_YYYY]">[PURCHASE_FY_YYYY]</option>
+                  <option value="[PURCHASE_FY_YY]">[PURCHASE_FY_YY]</option>
+                </datalist>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row justify-content-left">
+            <div class="col">
+              <div class="input-container">
+                <input type="text" id="width" class="text-input" autocomplete="off" placeholder="Enter the width"
+                  required />
+                <label class="label" for="width">Width</label>
+              </div>
+            </div>
+            <br>
+            <div class="col">
+              <div class="input-container">
+                <input type="text" id="prefill" class="text-input" autocomplete="off" placeholder="Pre fill with"
+                  required />
+                <label class="label" for="prefill">Pre fill with</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div><label
+            style="font-family: Lexend Deca;margin-left: 20px;font-weight: bold;color: black;font-size: 16px;">Enable
+            workflow
+            (Maker/Checker) </label>
+          <input type="checkbox" name="workflow" style="width: 15px;height: 15px;margin-left: 10px;" />
+          <br>
+          <label
+            style="font-family: Lexend Deca;margin-left: 20px;font-weight: bold;color: black;font-size: 16px;">Enable
+            Currency</label>
+          <input type="checkbox" id="workflow" style="width: 15px;height: 15px;margin-left: 10px;" />
+        </div>
+        <br>
+        <br>
+      </div>
+      </div>
+      </div>
+      <div class="container">
+        <div><label for="Normal"
+            style="font-family: Lexend Deca;margin-left: 20px;font-weight: bold;font-size: 19px;color: #000;">Login
+            with</label><br>
+          <input name="Normal" class="btn btn-link collapsed" type="radio" data-toggle="collapse" data-target="#"
+            aria-expanded="false" aria-controls="#"
+            style="font-family: Lexend Deca;text-decoration: none;color: black;font-size: large;margin-left: 20px;">
+          <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Normal</font>
+        </div>
+
+
+
+        <div>
+          <div>
+
+            <input name="Normal" class="btn btn-link collapsed" type="radio" data-toggle="collapse"
+              data-target="#collapse6" aria-expanded="false" aria-controls="collapse6"
+              style="font-family: Lexend Deca;text-decoration: none;color: black;font-size: large;margin-left: 20px;">
+            <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Active Directory</font>
+
+
+          </div>
+          <div id="collapse6" class="collapse" aria-labelledby="headingTwo">
+            <div class="card-body">
+              <font style="font-size:17px; font-family: Lexend Deca;" class="alrt">Active Directory</font><input
+                type="text" class="text-input2">
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </section>
+    <br>
+    <br>
+    <section class="details" id="confirm">
+      <div class="container">
+        <br>
+        <h3 style="font-family: Lexend Deca;"><i class="fa fa-check-square-o" aria-hidden="true"></i> Confirm Updates</h3>
+        <br>
+        <br>
+        <font style="font-size:17px; font-family: Lexend Deca;margin-left: 20px;" class="alrt">Company Logo</font>
+        <input type="file" name="logo" style="margin-left: 20px;">
+        <br>
+        <img src="#" alt="sample logo" style="margin-left: 20px;">
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+          <button class="update">Update</button>
+          <button class="update">Close</button>
+        </center>
+
+
+        <br>
+        <br>
+      </div>
+    </section>
+
+
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./index3.js"></script>
+  <script src="https://kit.fontawesome.com/91d9f33c9a.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/91d9f33c9a.js" crossorigin="anonymous"></script>
+
+
+</body>
+<script>
+  const phoneInputField = document.querySelector("#phone");
+  const phoneInput = window.intlTelInput(phoneInputField, {
+    utilsScript:
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+  const info = document.querySelector(".alert-info");
+
+  function process(event) {
+    event.preventDefault();
+
+    const phoneNumber = phoneInput.getNumber();
+
+    info.style.display = "";
+    info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+  }
+</script>
+
+</html>
